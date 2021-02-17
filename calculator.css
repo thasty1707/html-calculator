@@ -23,10 +23,14 @@ body{
     height: 50px;
     width: 250px;
     border: 1px solid black;
+    display: flex;
+    flex-shrink:initial;
     grid-area: 1/1/2/5;
     background-color: rgb(255, 241, 212);
     border-radius: 5px;
     text-align: right;
+    font-size: 30px;
+    font-family: 'Aldrich', sans-serif;
 }
 
 button{
@@ -35,6 +39,9 @@ button{
     margin: auto;
     border: 1px solid darkslategrey;
     border-radius: 5px;
+    font-family: 'Alata', sans-serif;
+    font-size: 20px;
+    padding: 0;
 }
 
 #clear{
@@ -42,10 +49,16 @@ button{
     width: 240px;
     height: 35px;
     background-color: rgb(255, 94, 94);
+    font-size: 24px;
+}
+
+#decimalPoint{
+    font-size: 30px;
 }
 
 p{
     margin: 0;
-    font-size: 12px;
+    font-size: 11px;
     color: rgb(94, 94, 94);
+    font-family: 'Quantico', sans-serif;
 }
