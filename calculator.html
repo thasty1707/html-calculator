@@ -9,25 +9,29 @@
 </head>
 <body>
     <div id="calcBody">
-        <div id="calcDisplay">0123456789.+-</div>
-        <button type="button" id="clear" class="buttons">C</button>
-        <button type="button" id="seven" class="numberButtons">7</button>
-        <button type="button" id="eight" class="numberButtons">8</button>
-        <button type="button" id="nine" class="numberButtons">9</button>
+        <div id="calcDisplay">
+            <p id="numbersDisplayed"></p>
+        </div>
+        <button type="button" id="clear" class="functionButtons">AC</button>
+        <button type="button" id="positiveNegative"class="functionButtons"><span>&#43;</span>/<span>&#8722;</span></button>
+        <button type="button" id="percent" class="functionButtons"><span>&#37;</span></button>
         <button type="button" id="dividedBy" class="mathButtons"><span>&#247;</span></button>
-        <button type="button" id="four" class="numberButtons">4</button>
-        <button type="button" id="five" class="numberButtons">5</button>
-        <button type="button" id="six" class="numberButtons">6</button>
+        <button type="button" id="seven" class="numberButtons" data-num="seven">7</button>
+        <button type="button" id="eight" class="numberButtons" data-num="eight">8</button>
+        <button type="button" id="nine" class="numberButtons" data-num="nine">9</button>
         <button type="button" id="times" class="mathButtons"><span>&#215;</span></button>
-        <button type="button" id="one" class="numberButtons">1</button>
-        <button type="button" id="two" class="numberButtons">2</button>
-        <button type="button" id="three" class="numberButtons">3</button>
+        <button type="button" id="four" class="numberButtons" data-num="four">4</button>
+        <button type="button" id="five" class="numberButtons" data-num="five">5</button>
+        <button type="button" id="six" class="numberButtons" data-num="six">6</button>
         <button type="button" id="minus" class="mathButtons"><span>&#8722;</span></button>
-        <button type="button" id="decimalPoint" class="mathButtons"><span>&#8901;</span></button>
-        <button type="button" id="zero" class="numberButtons">0</button>
-        <button type="button" id="equals" class="mathButtons"><span>&#61;</span></button>
+        <button type="button" id="one" class="numberButtons" data-num="one">1</button>
+        <button type="button" id="two" class="numberButtons" data-num="two">2</button>
+        <button type="button" id="three" class="numberButtons" data-num="three">3</button>
         <button type="button" id="plus" class="mathButtons"><span>&#43;</span></button>
+        <button type="button" id="zero" class="numberButtons" data-num="zero">0</button>
+        <button type="button" id="decimalPoint" class="numberButtons"><span>&#8901;</span></button>
+        <button type="button" id="equals" class="mathButtons"><span>&#61;</span></button>
     </div>
-    <p>HTML-Calculator by thasty1707</p>
+    <p id="footnote">HTML-Calculator by thasty1707</p>
 
 </body>
