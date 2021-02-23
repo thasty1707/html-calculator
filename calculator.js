@@ -1,9 +1,207 @@
-let display = document.getElementById("calcDisplay")
-let numberButtons = document.getElementsByClassName("numberButtons");
+let display = document.getElementById("numbersDisplayed")
+let numberButtons = document.querySelectorAll(".numberButtons");
 let mathButtons = document.getElementsByClassName("mathButtons");
 let clearDisplay = document.getElementById("clear");
+let equalButton = document.getElementById("equals");
 
 let numA = "";
 let numB = "";
-let calcResult = "";
+let mathOperator = "\+";
 
+function chooseNumbers(){
+    if(mathOperator === null){
+        if(numA.length < 10){
+            switch(event.target.dataset.number){
+                case "one":
+                    if(numA !== ""){
+                        numA += 1;
+                    }else {
+                        numA = "1"
+                    };
+                    break;
+                case "two":
+                    if(numA !== ""){
+                        numA += 2;
+                    }else {
+                        numA = "2"
+                    };
+                    break;
+                case "three":
+                    if(numA !== ""){
+                        numA += 3;
+                    }else {
+                        numA = "3"
+                    };
+                    break;
+                case "four":
+                    if(numA !== ""){
+                        numA += 4;
+                    }else {
+                        numA = "4"
+                    };
+                    break;
+                case "five":
+                    if(numA !== ""){
+                        numA += 5;
+                    }else {
+                        numA = "5"
+                    };
+                    break;
+                case "six":
+                    if(numA !== ""){
+                        numA += 6;
+                    }else {
+                        numA = "6"
+                    };
+                    break;
+                case "seven":
+                    if(numA !== ""){
+                        numA += 7;
+                    }else {
+                        numA = "7"
+                    };
+                    break;
+                case "eight":
+                    if(numA !== ""){
+                        numA += 8;
+                    }else {
+                        numA = "8"
+                    };
+                    break;
+                case "nine":
+                    if(numA !== ""){
+                        numA += 9;
+                    }else {
+                        numA = "9"
+                    };
+                    break;
+                case "zero":
+                    if(numA !== ""){
+                        numA += 0;
+                    }else {
+                        numA = "0"
+                    };
+                    break;
+                case "decimal":
+                    if(numA !== ""){
+                        numA += "\.";
+                    }else {
+                        numA = "0."
+                    };
+                    break;
+                };
+            display.innerHTML = numA;
+            }else{
+                return;
+        };
+    }else{
+        if(numB.length < 10){
+            switch(event.target.dataset.number){
+                case "one":
+                    if(numB !== ""){
+                        numB += 1;
+                    }else {
+                        numB = "1"
+                    };
+                    break;
+                case "two":
+                    if(numB !== ""){
+                        numB += 2;
+                    }else {
+                        numB = "2"
+                    };
+                    break;
+                case "three":
+                    if(numB !== ""){
+                        numB += 3;
+                    }else {
+                        numB = "3"
+                    };
+                    break;
+                case "four":
+                    if(numB !== ""){
+                        numB += 4;
+                    }else {
+                        numB = "4"
+                    };
+                    break;
+                case "five":
+                    if(numB !== ""){
+                        numB += 5;
+                    }else {
+                        numB = "5"
+                    };
+                    break;
+                case "six":
+                    if(numB !== ""){
+                        numB += 6;
+                    }else {
+                        numB = "6"
+                    };
+                    break;
+                case "seven":
+                    if(numB !== ""){
+                        numB += 7;
+                    }else {
+                        numB = "7"
+                    };
+                    break;
+                case "eight":
+                    if(numB !== ""){
+                        numB += 8;
+                    }else {
+                        numB = "8"
+                    };
+                    break;
+                case "nine":
+                    if(numB !== ""){
+                        numB += 9;
+                    }else{
+                        numB = "9"
+                    };
+                    break;
+                case "zero":
+                    if(numB !== ""){
+                        numB += 0;
+                    }else {
+                        numB = ""
+                    };
+                    break;
+                case "decimal":
+                    if(numB !== ""){
+                        insertDecimal(numB);
+                    }else{
+                        numB = "0.0";
+                    };
+                    break;
+                };
+            display.innerHTML = numB;
+            }else{
+                return;
+        };
+    }
+
+    console.log(numA);
+    console.log(numB);
+    console.log(mathOperator);
+}
+
+function operate(){
+    parseInt(numA);
+    parseInt(numB);
+};
+
+function clearCalculator(){
+    numA = "";
+    numB = "";
+    mathOperator = "";
+    display.innerHTML = "";
+};
+
+function insertDecimal(num){
+    return (num/100).toFixed(2);
+}
+
+numberButtons.forEach(numberButton => numberButton.addEventListener('click',chooseNumbers));
+clearDisplay.addEventListener('click',clearCalculator);
+equalButton.addEventListener('click',operate);
