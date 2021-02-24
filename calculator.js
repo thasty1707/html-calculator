@@ -12,71 +12,72 @@ function chooseNumbers(e){
     if(mathOperator === ""){
         if(numA.length < 10){
             switch(e.currentTarget.dataset.number){
+                //Add digit to end of numA; replace numA with new digit if numA == 0
                 case "one":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 1;
                     }else{
                         numA = "1";
                     }
                    break;
                 case "two":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 2;
                     }else {
                         numA = "2"
                     };
                     break;
                 case "three":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 3;
                     }else {
                         numA = "3"
                     };
                     break;
                 case "four":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 4;
                     }else {
                         numA = "4"
                     };
                     break;
                 case "five":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 5;
                     }else {
                         numA = "5"
                     };
                     break;
                 case "six":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 6;
                     }else {
                         numA = "6"
                     };
                     break;
                 case "seven":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 7;
                     }else {
                         numA = "7"
                     };
                     break;
                 case "eight":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 8;
                     }else {
                         numA = "8"
                     };
                     break;
                 case "nine":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 9;
                     }else {
                         numA = "9"
                     };
                     break;
                 case "zero":
-                    if(numA !== ""){
+                    if(numA !== "" && numA !== "0"){
                         numA += 0;
                     }else {
                         numA = "0"
@@ -100,63 +101,63 @@ function chooseNumbers(e){
         if(numB.length < 10){
             switch(e.currentTarget.dataset.number){
                 case "one":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 1;
                     }else {
                         numB = "1"
                     };
                     break;
                 case "two":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 2;
                     }else {
                         numB = "2"
                     };
                     break;
                 case "three":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 3;
                     }else {
                         numB = "3"
                     };
                     break;
                 case "four":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 4;
                     }else {
                         numB = "4"
                     };
                     break;
                 case "five":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 5;
                     }else {
                         numB = "5"
                     };
                     break;
                 case "six":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 6;
                     }else {
                         numB = "6"
                     };
                     break;
                 case "seven":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 7;
                     }else {
                         numB = "7"
                     };
                     break;
                 case "eight":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 8;
                     }else {
                         numB = "8"
                     };
                     break;
                 case "nine":
-                    if(numB !== ""){
+                    if(numB !== "" && numB !== "0"){
                         numB += 9;
                     }else{
                         numB = "9"
@@ -184,6 +185,7 @@ function chooseNumbers(e){
                 return;
         };
     };
+    console.log(numA, numB)
 };
 
 function chooseOperator(e){
@@ -211,7 +213,7 @@ function operate(){
     if(mathOperator != "" && numB != ""){
         switch(mathOperator){
             case 'add':
-            numC = parseInt(numA) + parseInt(numB);
+            numC = parseFloat(numA) + parseFloat(numB);
             break;
             case 'subtract':
                 numC = numA - numB;
@@ -223,13 +225,17 @@ function operate(){
                 numC = numA/numB;
                 break;
         };
-        numA = numC;
-        numB = "";
-        display.innerHTML = numA;
     }else{
-        display.innerHTML = numA;
         return;
-    }; 
+    };
+    stringC = numC.toString();
+    if(stringC.length > 9){
+        numA = stringC.slice(0, 8);
+    }else{
+        numA = numC;
+    };
+    numB = "";
+    display.innerHTML = numC; 
 };
 
 function clearCalculator(){
