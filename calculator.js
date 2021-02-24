@@ -6,19 +6,19 @@ let equalButton = document.getElementById("equals");
 
 let numA = "";
 let numB = "";
-let mathOperator = "\+";
+let mathOperator = "";
 
-function chooseNumbers(){
-    if(mathOperator === null){
+function chooseNumbers(e){
+    if(mathOperator === ""){
         if(numA.length < 10){
-            switch(event.target.dataset.number){
+            switch(e.currentTarget.dataset.number){
                 case "one":
                     if(numA !== ""){
                         numA += 1;
-                    }else {
-                        numA = "1"
-                    };
-                    break;
+                    }else{
+                        numA = "1";
+                    }
+                   break;
                 case "two":
                     if(numA !== ""){
                         numA += 2;
@@ -84,19 +84,21 @@ function chooseNumbers(){
                     break;
                 case "decimal":
                     if(numA !== ""){
-                        numA += "\.";
-                    }else {
-                        numA = "0."
+                        if(numA.indexOf(".") == -1){
+                            numA += '\.';
+                        };
+                    }else{
+                        numA = "0.";
                     };
                     break;
                 };
-            display.innerHTML = numA;
+                display.innerHTML = numA;
             }else{
                 return;
         };
     }else{
         if(numB.length < 10){
-            switch(event.target.dataset.number){
+            switch(e.currentTarget.dataset.number){
                 case "one":
                     if(numB !== ""){
                         numB += 1;
@@ -169,9 +171,11 @@ function chooseNumbers(){
                     break;
                 case "decimal":
                     if(numB !== ""){
-                        insertDecimal(numB);
+                        if(numB.indexOf(".") == -1){
+                            numB += '\.';
+                        };
                     }else{
-                        numB = "0.0";
+                        numB = "0.";
                     };
                     break;
                 };
@@ -179,16 +183,53 @@ function chooseNumbers(){
             }else{
                 return;
         };
-    }
+    };
+};
 
-    console.log(numA);
-    console.log(numB);
-    console.log(mathOperator);
-}
+function chooseOperator(e){
+    if(numB == ""){
+        switch(e.currentTarget.dataset.operators){
+            case "plus":
+                mathOperator = "add"
+            break;
+            case "minus":
+                mathOperator = "subtract"
+            break;
+            case "times":
+                mathOperator = "multiply"
+            break;
+            case "dividedBy":
+                mathOperator = "divide"
+            break;
+        };
+    }else{
+        return;
+    };
+};
 
 function operate(){
-    parseInt(numA);
-    parseInt(numB);
+    if(mathOperator != "" && numB != ""){
+        switch(mathOperator){
+            case 'add':
+            numC = parseInt(numA) + parseInt(numB);
+            break;
+            case 'subtract':
+                numC = numA - numB;
+                break;
+            case 'multiply':
+                numC = numA * numB;
+                break;
+            case 'divide':
+                numC = numA/numB;
+                break;
+        };
+        numA = numC;
+        numB = "";
+        display.innerHTML = numA;
+    }else{
+        display.innerHTML = numA;
+        return;
+    }; 
 };
 
 function clearCalculator(){
@@ -198,10 +239,12 @@ function clearCalculator(){
     display.innerHTML = "";
 };
 
-function insertDecimal(num){
-    return (num/100).toFixed(2);
-}
 
-numberButtons.forEach(numberButton => numberButton.addEventListener('click',chooseNumbers));
+numberButtons.forEach(numberButton => numberButton.addEventListener('click', chooseNumbers));
 clearDisplay.addEventListener('click',clearCalculator);
 equalButton.addEventListener('click',operate);
+
+let add = document.getElementById("plus").addEventListener('click',chooseOperator);
+let subtract = document.getElementById("minus").addEventListener('click',chooseOperator);
+let multiply = document.getElementById("times").addEventListener('click',chooseOperator);
+let divide = document.getElementById("dividedBy").addEventListener('click',chooseOperator);
