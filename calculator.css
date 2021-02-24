@@ -9,7 +9,7 @@ body{
 #calcBody{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows:  1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr .5fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5px 5px;
     padding: 10px;
     margin: 30px auto 0 auto;
@@ -82,6 +82,7 @@ button:active{
 
 #clear{
     background-color: rgb(255, 148, 140);
+    grid-area: 
 }
 
 #clear:hover{
@@ -90,11 +91,16 @@ button:active{
 
 #decimalPoint{
     font-size: 36px;
+    grid-area: 7/3/8/4;
+}
+
+#equals{
+    grid-area: 7/4/8/5;
 }
 
 #zero{
     width: 120px;
-    grid-area: 6/1/7/3;
+    grid-area: 7/1/8/3;
 }
 
 #footnote{

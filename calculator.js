@@ -8,13 +8,14 @@ let numA = "";
 let numB = "";
 let mathOperator = "";
 
+//function to choose the numbers
 function chooseNumbers(e){
     if(mathOperator === ""){
         if(numA.length < 10){
             switch(e.currentTarget.dataset.number){
-                //Add digit to end of numA; replace numA with new digit if numA == 0
+                //Add chosen digit or decimal to end of numA; replace numA with new digit if numA == 0
                 case "one":
-                    if(numA !== "" && numA !== "0"){
+                    if(numA !== "" && numA != "0"){
                         numA += 1;
                     }else{
                         numA = "1";
@@ -98,6 +99,7 @@ function chooseNumbers(e){
                 return;
         };
     }else{
+        //function to choose second number after choosing operation
         if(numB.length < 10){
             switch(e.currentTarget.dataset.number){
                 case "one":
@@ -185,9 +187,9 @@ function chooseNumbers(e){
                 return;
         };
     };
-    console.log(numA, numB)
 };
 
+//function to choose addition, subtraction, multiplication, or division
 function chooseOperator(e){
     if(numB == ""){
         switch(e.currentTarget.dataset.operators){
@@ -209,6 +211,7 @@ function chooseOperator(e){
     };
 };
 
+//function to execute operation
 function operate(){
     if(mathOperator != "" && numB != ""){
         switch(mathOperator){
@@ -235,9 +238,11 @@ function operate(){
         numA = numC;
     };
     numB = "";
-    display.innerHTML = numC; 
+    mathOperator = "";
+    display.innerHTML = numA;
 };
 
+//function to reset calculator
 function clearCalculator(){
     numA = "";
     numB = "";
@@ -245,6 +250,29 @@ function clearCalculator(){
     display.innerHTML = "";
 };
 
+//function to make numbers positive or negative
+function positiveOrNegative(){
+    if(mathOperator === ""){
+        if(numA >= 0){
+            numA = "\-" + numA;
+            display.innerHTML = numA;
+        }else{
+            numA = numA.slice(1,9);
+            display.innerHTML = numA;
+        };
+    }else if(mathOperator !== ""){
+        if(numB >= 0){
+            numB = "\-" + numB;
+            display.innerHTML = numB;
+        }else{
+            //
+            numB = numB.slice(1,9);
+            display.innerHTML = numB;
+        };
+    }else{
+        return;
+    };
+};
 
 numberButtons.forEach(numberButton => numberButton.addEventListener('click', chooseNumbers));
 clearDisplay.addEventListener('click',clearCalculator);
@@ -254,3 +282,4 @@ let add = document.getElementById("plus").addEventListener('click',chooseOperato
 let subtract = document.getElementById("minus").addEventListener('click',chooseOperator);
 let multiply = document.getElementById("times").addEventListener('click',chooseOperator);
 let divide = document.getElementById("dividedBy").addEventListener('click',chooseOperator);
+let posNeg = document.getElementById("positiveNegative").addEventListener('click',positiveOrNegative);
