@@ -5,34 +5,34 @@
 <head>
     <link rel="stylesheet" href="calculator.css">
     <link href="https://fonts.googleapis.com/css2?family=Alata&family=Aldrich&family=Quantico&display=swap" rel="stylesheet">
+    <script src="calculator.js" defer></script>
 </head>
 <body>
     <div id="calcBody">
         <div id="calcDisplay">
             <p id="numbersDisplayed" maxlength='9'></p>
         </div>
-        <button type="button" id="clear" class="functionButtons">AC</button>
-        <button type="button" id="positiveNegative"class="functionButtons"><span>&#43;</span>/<span>&#8722;</span></button>
-        <button type="button" id="percent" class="functionButtons"><span>&#37;</span></button>
-        <button type="button" id="dividedBy" class="mathButtons" data-operators="dividedBy"><span>&#247;</span></button>
+        <button type="button" id="allClear" class="functionButtons">AC</button>
+        <button type="button" id="clear" class="functionButtons">C</button>
+        <button type="button" id="positiveNegative"class="functionButtons"><span>&#43;/&#8722;</span></button>
+        <button type="button" id="backspace"><strong><span>&#8678;</span></strong></button>
         <button type="button" id="seven" class="numberButtons" data-number="seven">7</button>
         <button type="button" id="eight" class="numberButtons" data-number="eight">8</button>
         <button type="button" id="nine" class="numberButtons" data-number="nine">9</button>
-        <button type="button" id="times" class="mathButtons" data-operators="times"><span>&#215;</span></button>
+        <button type="button" id="dividedBy" class="mathButtons" data-operators="dividedBy"><span>&#247;</span></button>
         <button type="button" id="four" class="numberButtons" data-number="four">4</button>
         <button type="button" id="five" class="numberButtons" data-number="five">5</button>
         <button type="button" id="six" class="numberButtons" data-number="six">6</button>
-        <button type="button" id="minus" class="mathButtons" data-operators="minus"><span>&#8722;</span></button>
+        <button type="button" id="times" class="mathButtons" data-operators="times"><span>&#215;</span></button>
         <button type="button" id="one" class="numberButtons" data-number="one" >1</button>
         <button type="button" id="two" class="numberButtons" data-number="two" >2</button>
         <button type="button" id="three" class="numberButtons" data-number="three">3</button>
-        <button type="button" id="plus" class="mathButtons" data-operators="plus"><span>&#43;</span></button>
-        <button type="button" id="zero" class="numberButtons" data-number="zero">0</button>
+        <button type="button" id="minus" class="mathButtons" data-operators="minus"><span>&#8722;</span></button>
         <button type="button" id="decimalPoint" class="numberButtons" data-number="decimal"><span>&#8901;</span></button>
+        <button type="button" id="zero" class="numberButtons" data-number="zero">0</button>
         <button type="button" id="equals" class="resultButton"><span>&#61;</span></button>
+        <button type="button" id="plus" class="mathButtons" data-operators="plus"><span>&#43;</span></button>
     </div>
     <p id="footnote">HTML-Calculator by thasty1707</p>
 
 </body>
-
-<script src="calculator.js"></script>
