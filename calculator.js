@@ -210,14 +210,30 @@ function chooseOperator(e){
             break;
         };
     }else{
-        return;
+        operate();
+        switch(e.currentTarget.dataset.operators){
+            case "plus":
+                mathOperator = "add"
+            break;
+            case "minus":
+                mathOperator = "subtract"
+            break;
+            case "times":
+                mathOperator = "multiply"
+            break;
+            case "dividedBy":
+                mathOperator = "divide"
+            break;
+        };
     };
 };
 
 //function to execute operation
 function operate(){
-    if(numB === 0 && mathOperator === "divide"){
+    if(numB == 0 && mathOperator === "divide"){
         alert("Cannot divide by 0\! Please try again\.")
+        clearCalculator();
+        return;
     }else if(numA != "" && numB != "" && mathOperator != ""){
         switch(mathOperator){
             case 'add':
@@ -260,9 +276,10 @@ function operate(){
         numC = stringC.slice(0, 9);
     }else{
         numC = Number(stringC);
-    }
-    display.innerHTML = numC;
-    numA = "";    
+    };
+    numA = numC;
+    display.innerHTML = numA;
+    numC = "";    
     numB = "";
     mathOperator = "";
 };
@@ -322,22 +339,18 @@ function positiveOrNegative(){
 
 //function to delete entry 1 digit at a time
 function backspace(){
-    if(mathOperator !== ""){
-        mathOperator = "";
-    }else if(display.innerHTML == numA){
-        let numStr = numA.toString();
-        numA = numStr.slice(0, numStr.length-1);
-        display.innerHTML = numA;    
-    }else if(display.innerHTML == numB){
-        let numStr = numB.toString();
-        numB = numStr.slice(0, numStr.length-1);
-        display.innerHTML = numB;    
-    }else if(display.innerHTML == numC){
-        let numStr = numC.toString();
-        numC = numStr.slice(0, numStr.length-1);
-        display.innerHTML = numC;   
+    if(mathOperator === ""){
+        if(display.innerHTML === numA){
+            let numStr = numA.toString();
+            numA = numStr.slice(0, numStr.length-1);
+            display.innerHTML = numA;
+        };
+    }else if(mathOperator !== "" && display.innerHTML === numA){
+        display.innerHTML = numA;
     }else{
-        return;
+        let numStr = numB.toString();
+           numB = numStr.slice(0, numStr.length-1);
+            display.innerHTML = numB;
     };
 };
 
